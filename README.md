@@ -1,2 +1,4 @@
-Visionoir.com-web-player
+Visionoir.com web player
 ========================
+
+Early alpha available @ http://visionoir.com/app/
