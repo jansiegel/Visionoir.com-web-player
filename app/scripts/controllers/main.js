@@ -6,8 +6,11 @@ angular.module('visioPlayerApp')
   $scope.init = function(){
   	dimSetService.setMainCanvasDimensions();
     canvasGeneratorService.prepareOffscreen();
+    canvasGeneratorService.preRenderKeyframes(7,2);
 
-    canvasGeneratorService.blendingAdd();
+    canvasGeneratorService.sendKeyframeToView(0);
+
+    // canvasGeneratorService.blendingAdd([0,0],undefined,undefined);
 
   }();
 

@@ -15,10 +15,10 @@ angular.module('visioPlayerApp')
   			mainCanvasCtx: mainCanvas.getContext('2d'),
   			setMainCanvasDimensions: function(width,height) {
   				if(!width) {
-  					width = screen.availWidth;
+  					width = window.innerWidth-20;
   				}
   				if(!height) {
-  					height = screen.availHeight;
+  					height = window.innerHeight;
   				}
 
   				mainCanvas.width = width;
@@ -26,6 +26,11 @@ angular.module('visioPlayerApp')
 
   				this.mainCanvasWidth = getMainCanvasDimensions('width');
   				this.mainCanvasHeight = getMainCanvasDimensions('height');
+  			},
+  			getVisibleAreaOffset: function() {
+  				var mainImg = document.getElementById("bg-all");
+  				return [(-1)*parseInt((mainImg.width - window.innerWidth)/2),(-1)*parseInt((mainImg.height - window.innerHeight)/2)];
+  				// return [200,0];
   			}
 
   		}

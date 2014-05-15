@@ -40,13 +40,13 @@ angular.module('visioPlayerApp')
     		}
 
 
-    		thisCanv.ctx.drawImage(srcImageObj, 0, 0);
+    		thisCanv.ctx.drawImage(srcImageObj, dimSetService.getVisibleAreaOffset()[0], dimSetService.getVisibleAreaOffset()[1]);
 
     		if(indOffset !== null) {
 
     			var imageData = thisCanv.ctx.getImageData(
-									0, 
-									0, 
+									0,  
+									0,
 									dimSetService.mainCanvasWidth,
 									dimSetService.mainCanvasHeight
 								);
@@ -103,8 +103,25 @@ angular.module('visioPlayerApp')
     			data[i+3] = rgbData.b.data[i+3];
     		}
 
-    		dimSetService.mainCanvasCtx.putImageData(mainData, 0, 0);
+    		// dimSetService.mainCanvasCtx.putImageData(mainData, 0, 0);
+    		return mainData;
 
+    	}
+
+    	service.preRenderKeyframes = function(maxXOffset, maxYOffset) {
+    			service.keyframes = [];
+    			var yOffsetStep = parseInt(maxXOffset/maxYOffset),
+    			yOffset = 0;
+
+    		for(var i = 0; i < maxXOffset ; i++) {
+    			if(i%yOffsetStep == 0) { yOffset++; }
+// console.log('i:',i)
+    			service.keyframes[i] = service.blendingAdd([(-1)*i,yOffset],null,[i,(-1)*yOffset]);
+    		}
+    	}
+
+    	service.sendKeyframeToView = function(keyframeId) {
+    			dimSetService.mainCanvasCtx.putImageData(service.keyframes[keyframeId], 0, 0);
     	}
     	
     	return service;
