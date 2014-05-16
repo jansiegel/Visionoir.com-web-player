@@ -1,18 +1,18 @@
 'use strict';
 
-describe('Service: Audioanalyzerservice', function () {
+describe('Service: AudioAnalyzerService', function () {
 
   // load the service's module
   beforeEach(module('visioPlayerApp'));
 
   // instantiate service
-  var Audioanalyzerservice;
-  beforeEach(inject(function (_Audioanalyzerservice_) {
-    Audioanalyzerservice = _Audioanalyzerservice_;
+  var AudioAnalyzerService;
+  beforeEach(inject(function (_AudioAnalyzerService_) {
+    AudioAnalyzerService = _AudioAnalyzerService_;
   }));
 
   it('should do something', function () {
-    expect(!!Audioanalyzerservice).toBe(true);
+    expect(!!AudioAnalyzerService).toBe(true);
   });
 
 });

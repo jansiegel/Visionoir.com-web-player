@@ -3,7 +3,7 @@
 angular.module('visioPlayerApp')
   .controller('MainCtrl', ['$scope','CanvasGeneratorService', 'DimensionSetupService','AudioAnalyzerService', function ($scope,canvasGeneratorService,dimSetService,audioAnalyzerService) {
 
-  	$scope.distortionOffset = [9,5];
+  	$scope.distortionOffset = [29,5];
 
   	$scope.update = function() {
   		// function update() {

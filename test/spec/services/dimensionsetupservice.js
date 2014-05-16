@@ -1,18 +1,18 @@
 'use strict';
 
-describe('Service: Dimensionsetupservice', function () {
+describe('Service: DimensionSetupService', function () {
 
   // load the service's module
   beforeEach(module('visioPlayerApp'));
 
   // instantiate service
-  var Dimensionsetupservice;
-  beforeEach(inject(function (_Dimensionsetupservice_) {
-    Dimensionsetupservice = _Dimensionsetupservice_;
+  var DimensionSetupService;
+  beforeEach(inject(function (_DimensionSetupService_) {
+    DimensionSetupService = _DimensionSetupService_;
   }));
 
   it('should do something', function () {
-    expect(!!Dimensionsetupservice).toBe(true);
+    expect(!!DimensionSetupService).toBe(true);
   });
 
 });
