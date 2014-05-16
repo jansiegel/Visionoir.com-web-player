@@ -31,7 +31,8 @@ angular.module('visioPlayerApp')
   				var mainImg = document.getElementById("bg-all");
   				return [(-1)*parseInt((mainImg.width - window.innerWidth)/2),(-1)*parseInt((mainImg.height - window.innerHeight)/2)];
   				// return [200,0];
-  			}
+  			},
+        mainImg: document.getElementById("bg-all")
 
   		}
   });

@@ -21,21 +21,31 @@ angular.module('visioPlayerApp')
 	}
 
   	$scope.init = function(){
-  		dimSetService.setMainCanvasDimensions();
-  		canvasGeneratorService.prepareOffscreen();
-  		canvasGeneratorService.preRenderKeyframes($scope.distortionOffset[0],$scope.distortionOffset[1]);
 
-	    // canvasGeneratorService.sendKeyframeToView(0);
+  		var waitForImage = function(callback) {
+  			if(!dimSetService.mainImg.complete) {
+  				setTimeout(callback,100);
+  			} else {
+  				dimSetService.setMainCanvasDimensions();
+  				canvasGeneratorService.prepareOffscreen();
+  				canvasGeneratorService.preRenderKeyframes($scope.distortionOffset[0],$scope.distortionOffset[1]);
 
-	    audioAnalyzerService.prepareAudioContext();
+			    // canvasGeneratorService.sendKeyframeToView(0);
 
-	    audioAnalyzerService.injectTrack(audioAnalyzerService.providePlaylist()[0]);
+			    audioAnalyzerService.prepareAudioContext();
 
-	    audioAnalyzerService.setAnalyzer();
+			    audioAnalyzerService.injectTrack(audioAnalyzerService.providePlaylist()[0]);
+
+			    audioAnalyzerService.setAnalyzer();
 
 
-    	$scope.update();
+			    $scope.update();
 
+  			}
+  		}
+  		waitForImage(waitForImage);
+
+  		
 	}();
 
   }]);

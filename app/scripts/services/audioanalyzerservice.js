@@ -35,8 +35,6 @@ angular.module('visioPlayerApp')
     		service.frequencyData = new Uint8Array(service.analyser.frequencyBinCount);
     		service.analyser.getByteFrequencyData(service.frequencyData);
 
-console.log(service.audioElement)
-
     		service.audioElement.addEventListener("canplay", function() {
     			var source = service.context.createMediaElementSource(service.audioElement);
     			source.connect(service.analyser);
